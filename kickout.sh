@@ -54,8 +54,8 @@ do
 
 		if [ $mode = "black" -a $inBlack -eq 0 ] || [ $mode = "white" -a $inWhite -ne 0 ]
 			then
-				rssi=""; rssi=$(iw $wlan station get $mac | \
-				grep "signal avg" | awk '{ print $3 }')
+				rssi=""; rssi=$(iw dev $wlan station get $mac | \
+        grep "signal" | awk '{ print $2 }')
 				if [ $rssi -lt $thr ]
 					then
 						##skip wlan if necessary
